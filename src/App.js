@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import api from './services/api';
 
 import {
   SafeAreaView,
@@ -10,8 +11,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import api from './services/api';
-
 export default function App() {
   const [repositories, setRepositories] = useState([]);
 
@@ -22,7 +21,7 @@ export default function App() {
   }, []);
 
   async function handleLikeRepository(id) {
-    const response = await api.post(`respositories/${id}/like`);
+    const response = await api.post(`repositories/${id}/like`);
 
     const likedRepository = response.data;
 
